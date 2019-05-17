@@ -8,6 +8,9 @@ trap "kill 0" EXIT
 nginx -g "daemon off;" &
 export NGINX_PID=$!
 
+# give some time for nginx to start
+sleep 1
+
 while [ true ]; do
     echo "Reloading"
 
@@ -24,6 +27,6 @@ while [ true ]; do
     # Wait on sleep so that when we get ctrl-c'ed it kills everything due to our trap
     wait "$SLEEP_PID"
 
-    echo "Ctrl-C received, exiting"
+    echo "Sleep finished"
 done
 
