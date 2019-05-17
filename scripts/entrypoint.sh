@@ -13,11 +13,17 @@ while [ true ]; do
 
     kill -HUP $NGINX_PID
 
+    echo "Sleeping"
+
     # Sleep for 1 week
     sleep 24h &
     SLEEP_PID=$!
 
+    echo "Waiting $SLEEP_PID"
+
     # Wait on sleep so that when we get ctrl-c'ed it kills everything due to our trap
     wait "$SLEEP_PID"
+
+    echo "Ctrl-C received, exiting"
 done
 
