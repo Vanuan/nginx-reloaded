@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # When we get killed, kill all our children
 trap "exit" INT TERM
